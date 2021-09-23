@@ -1,0 +1,32 @@
+.headerbody {
+    position: sticky;
+    top: 0;
+    height: 50px;
+    background-color: white;
+    display:flex;
+    justify-content:space-between;
+    width: "100%";
+}
+
+.leftbody {
+    flex-grow: 3;
+    height: 50px;
+}
+
+.mainbody {
+    flex-grow: 4;
+    height: 50px;
+}
+
+.rightbody {
+    flex-grow: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+.profileimage {
+    width: 26px;
+    height: 26px;
+}

@@ -23,7 +23,7 @@ import { QuestionAnswerSharp } from "@material-ui/icons";
 
 // steps tostart this page:
 // you need to first log in by using the login page in /user/login
-// afterwards, move to /user/my page
+// afterwards, move to /user/mypage
 // the account is tester1@berkeley.edu and password is tester1
 // if you have any Question ask junghun huh
 

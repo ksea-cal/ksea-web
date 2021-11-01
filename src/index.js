@@ -1,20 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+
 import App from './App';
 import { store } from './redux/reducer';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import Header from './components/generic/header';
+import User from './pages/user';
 
 const routing = (
   <Router>
-    <div>
-      <Header />
-      <Switch>
+    <Switch>
+      <div>
+        <style jsx global>{`
+          body {
+            margin: 0px;
+            padding: 0px;
+          }
+        `}
+        </style>
+        <Header />
         <Route exact path="/" component={App} />
-      </Switch>
-    </div>
+        <Route path="/user" component={User} />
+      </div>
+    </Switch>
   </Router>
 );
 

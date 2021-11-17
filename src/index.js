@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import Header from './components/generic/header';
 import User from './pages/user';
+import Members from './pages/members';
 
 const routing = (
   <Router>
@@ -23,6 +24,7 @@ const routing = (
         <Header />
         <Route exact path="/" component={App} />
         <Route path="/user" component={User} />
+        <Route path="/members" component={Members} />
       </div>
     </Switch>
   </Router>

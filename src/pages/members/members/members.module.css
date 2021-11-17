@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.form {
+    width: 40vmin;
+    height: 40vmin;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(235, 235, 235);
+    padding: 20px;
+    margin-top: 20vmin;
+    margin-bottom: 20vmin;
+  }
+
+.passwordBox {
+    margin-top: 5vmin;
+}

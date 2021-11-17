@@ -33,6 +33,13 @@ function SignUp(props) {
   const [minor_2, setminor_2] = useState(null);
   const [errorr, setError] = useState(false);
 
+  // fetch list of majors: http://127.0.0.1:8000/majors/
+  //TODO:
+  //  1. make the design more suitable
+  // 2. after signup, save data in redux (look at login for documentation and help)
+  // 3. fetch majors from the api
+  // add logic / toolbar to select majors and minors
+
   const signUp = async () => {
     console.log(email, password)
     axios.post('http://127.0.0.1:8000/users/signup/', {

@@ -10,7 +10,6 @@ function User() {
     return (
         <Router>
             <Switch>
-                <Route exact path="/" component={Login} />
                 <Route path={`${path}/login`} component={Login} />
                 <Route path={`${path}/signup`} component={Signup} />
                 <Route path={`${path}/mypage`} component={MyPage} />

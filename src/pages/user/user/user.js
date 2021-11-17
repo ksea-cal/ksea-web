@@ -18,10 +18,10 @@ import axios from "axios";
 import { QuestionAnswerSharp } from "@material-ui/icons";
 
 // TODO:
-// 1. when this page is first OpenWithRounded, call http://127.0.0.1:8000/users/{user.id} and get info
+// 1. when this page is first opened, call http://127.0.0.1:8000/users/{user.id} and get info
 // 2. create UI that shows all of the user data
 
-// steps tostart this page:
+// steps to start this page:
 // you need to first log in by using the login page in /user/login
 // afterwards, move to /user/mypage
 // the account is tester1@berkeley.edu and password is tester1

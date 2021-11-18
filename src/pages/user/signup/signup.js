@@ -39,6 +39,11 @@ function SignUp(props) {
   // 2. after signup, save data in redux (look at login for documentation and help)
   // 3. fetch majors from the api
   // add logic / toolbar to select majors and minors
+  // majors - Intended/Major 1 & Intended/Major 2
+  // send to signup as "majors": [list of ids]
+  // minors - Minor 1 & minor 2
+  // send to signup as "minors": [list of ids]
+  // gender -> male => "MAL", female => "FEM"
 
   const signUp = async () => {
     console.log(email, password)

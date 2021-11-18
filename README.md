@@ -45,12 +45,12 @@ npm start
 git checkout -b [BRANCH NAME]
 ```
 
-2. time to time, rebase from master
+2. time to time, rebase from main
 ```
-git checkout master
+git checkout main
 git pull
 git checkout [BRANCH NAME]
-git rebase master
+git rebase main
 ```
 
 3. push to remote branch

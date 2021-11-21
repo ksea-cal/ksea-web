@@ -1,12 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-// import './App.css';
+import React from "react";
+import logo from "./logo.svg";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img
+          src={
+            "https://upload.wikimedia.org/wikipedia/commons/5/51/IU_in_%22Love_Poem%22_Concert_in_Seoul_on_23rd_November_2019.jpg"
+          }
+          className="App-logo"
+          alt="logo"
+        />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>

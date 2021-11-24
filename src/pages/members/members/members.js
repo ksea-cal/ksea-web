@@ -16,6 +16,8 @@ import {
 import styles from './members.module.css';
 import axios from "axios";
 
+import Grid from "./components/grid";
+
 
 function Members(props) {
 
@@ -53,6 +55,7 @@ function Members(props) {
     }
 
     return (
+        <div>
         <div className={styles.container}>
             <div className={styles.form}>
                 <Stack spacing={4} direction="column" onSubmit={logIn}>
@@ -65,6 +68,31 @@ function Members(props) {
             </div>
         </div>
 
+        <Grid
+            info={
+                [
+                    {
+                        name: "Daniel Shin",
+                        status: "Member",
+                        major: "EECS",
+                        bio: "Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen."
+                    },
+                    {
+                        name: "Daniel Shin",
+                        status: "Member",
+                        major: "EECS",
+                        bio: "Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen."
+                    },
+                    {
+                        name: "Daniel Shin",
+                        status: "Member",
+                        major: "EECS",
+                        bio: "Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen."
+                    }
+                ]
+            }
+        />
+        </div>
     );
 }
 export default Members;

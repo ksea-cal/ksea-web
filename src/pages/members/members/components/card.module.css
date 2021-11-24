@@ -1,0 +1,37 @@
+.cardbody{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 20px;
+    width: 560px;
+    height: 180px;
+    margin: 10px;   
+}
+
+.image{
+    padding: 10px;
+}
+
+.content{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.name{
+    font-weight: bold;
+    font-size: 120%;
+    text-decoration: none;
+    color: black;
+}
+
+.info{
+    font-size: 100%;
+    margin-bottom: 0px !important;
+}
+
+.placeholder{
+    border-radius:50%;
+    background-color: gray;
+    height: 100%;
+    width: 100%;
+}

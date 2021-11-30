@@ -2,10 +2,6 @@ import React, { useLayoutEffect, useState } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 
-import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-
 import {
     setToken,
     setUser,
@@ -17,81 +13,69 @@ import styles from './members.module.css';
 import axios from "axios";
 
 import Grid from "./components/grid";
+import Filter from "./components/filter";
 
+const StructureData = (raw) => {
+    return [];
+};
 
-function Members(props) {
+const GetTerms = (raw) => {
+    return [];
+};
 
-    const token = useSelector(selectToken);
-    const user = useSelector(selectUser);
-    const dispatch = useDispatch();
+const Members = (props) => {
+    const data = StructureData(props.members);
+    const terms = ["Fall 2021", "Spring 2021"]; // GetTerms(props.members);
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [errorr, setError] = useState(false);
+    const [filteredTerm, setFilteredTerm] = useState("All Terms");
 
-    const logIn = async () => {
-        axios.post('http://127.0.0.1:8000/users/login/', {
-            berkeley_email: email,
-            password: password
-        })
-            .then(function (response) {
-                console.log(response.data);
-                dispatch(setToken(response.data.token));
-                dispatch(setUser(response.data.user));
-            })
-            .catch(function (error) {
-                console.log(error);
-                setError(true);
-            });
-    }
+    const termChangeHandler = (selectedTerm) => {
+        setFilteredTerm(selectedTerm);
+    };
 
-    const onEmailChange = (event) => {
-        setEmail(event.target.value)
-        setError(false);
-    }
+    const [term, year] = filteredTerm.split(" ");
 
-    const onPasswordChange = (event) => {
-        setPassword(event.target.value)
-    }
+    const filteredData = data.filter(
+        (member) => {
+            if (term == "All" && year == "Terms") return true;
+            return member.term == term && member.year == year;
+        }
+    );
 
     return (
-        <div>
-        <div className={styles.container}>
-            <div className={styles.form}>
-                <Stack spacing={4} direction="column" onSubmit={logIn}>
-                    <TextField id="emailField" error={errorr} helperText={"Wrong username or password."} value={email} onChange={onEmailChange} label="Email" variant="outlined" />
-                    <TextField id="passwordField" value={password} onChange={onPasswordChange} type="password" label="Password" variant="outlined" className={styles.passwordBox} />
-                    <Button onClick={logIn} variant="contained">Log In</Button>
-                    <Button variant="text"><Link to={`/user/signup`}>Sign Up</Link>
-                    </Button>
-                </Stack>
+        <div className="container">
+            <div className="bar">
+                <h2>Members</h2>
+                <Filter
+                    selected={filteredTerm}
+                    onChangeTerm={termChangeHandler}
+                    terms={terms}
+                />
             </div>
-        </div>
-
-        <Grid
-            info={
-                [
-                    {
-                        name: "Daniel Shin",
-                        status: "Member",
-                        major: "EECS",
-                        bio: "Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen."
-                    },
-                    {
-                        name: "Daniel Shin",
-                        status: "Member",
-                        major: "EECS",
-                        bio: "Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen."
-                    },
-                    {
-                        name: "Daniel Shin",
-                        status: "Member",
-                        major: "EECS",
-                        bio: "Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen."
-                    }
-                ]
-            }
-        />
+            <Grid
+                info={ // filteredData
+                    [
+                        {
+                            name: "Daniel Shin",
+                            status: "Member",
+                            major: "EECS",
+                            bio: "Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen."
+                        },
+                        {
+                            name: "Daniel Shin",
+                            status: "Member",
+                            major: "EECS",
+                            bio: "Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen."
+                        },
+                        {
+                            name: "Daniel Shin",
+                            status: "Member",
+                            major: "EECS",
+                            bio: "Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen."
+                        }
+                    ]
+                }
+            />
         </div>
     );
 }

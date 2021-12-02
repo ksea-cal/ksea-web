@@ -16,16 +16,41 @@ import Grid from "./components/grid";
 import Filter from "./components/filter";
 
 const StructureData = (raw) => {
-    return [];
+    return [
+                {
+                    name: "Berry Not sPeciAl ",
+                    status: "Member",
+                    major: "EECS",
+                    term: "Fall",
+                    year: "2021",
+                    bio: "Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen."
+                },
+                {
+                    name: "Dumpling Addict",
+                    status: "Member",
+                    major: "EECS",
+                    term: "Spring",
+                    year: "2021",
+                    bio: "Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen."
+                },
+                {
+                    name: "Apple Boy",
+                    status: "Member",
+                    major: "EECS",
+                    term: "Fall",
+                    year: "2021",
+                    bio: "Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen."
+                }
+        ];
 };
 
 const GetTerms = (raw) => {
-    return [];
+    return ["Fall 2021", "Spring 2021"];
 };
 
 const Members = (props) => {
     const data = StructureData(props.members);
-    const terms = ["Fall 2021", "Spring 2021"]; // GetTerms(props.members);
+    const terms = GetTerms(props.members);
 
     const [filteredTerm, setFilteredTerm] = useState("All Terms");
 
@@ -52,30 +77,7 @@ const Members = (props) => {
                     terms={terms}
                 />
             </div>
-            <Grid
-                info={ // filteredData
-                    [
-                        {
-                            name: "Daniel Shin",
-                            status: "Member",
-                            major: "EECS",
-                            bio: "Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen."
-                        },
-                        {
-                            name: "Daniel Shin",
-                            status: "Member",
-                            major: "EECS",
-                            bio: "Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen."
-                        },
-                        {
-                            name: "Daniel Shin",
-                            status: "Member",
-                            major: "EECS",
-                            bio: "Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen."
-                        }
-                    ]
-                }
-            />
+            <Grid info={filteredData}/>
         </div>
     );
 }

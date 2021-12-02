@@ -2,21 +2,18 @@ import React from "react";
 import styles from "./filter.module.css";
 
 const Filter = (props) => {
-    const termChangeHandler = (event) => {
-        props.onChangeTerm(event.target.value);
+    const changeHandler = (event) => {
+        props.changed(event.target.value);
     };
 
     return (
-        <div className="filter_body">
-            <div className="term">
-                <label>Term</label>
-                <select value={props.selected} onChange={termChangeHandler}>
-                    <option value='All Terms'>All Terms</option>
-                    {props.terms.map((term) => (
-                        <option value={term}>{term}</option>
-                    ))}
-                </select>
-            </div>
+        <div className="filter-body">
+            <label>{props.name}</label>
+            <select value={props.selected} onChange={changeHandler}>
+                {props.options.map((val) => (
+                    <option value={val}>{val}</option>
+                ))}
+            </select>
         </div>
     );
 };

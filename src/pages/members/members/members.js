@@ -15,7 +15,7 @@ import axios from "axios";
 import Grid from "./components/grid";
 import Filter from "./components/filter";
 
-const StructureData = (raw) => {
+const structureData = (raw) => {
     return [
                 {
                     name: "Berry Not sPeciAl ",
@@ -44,13 +44,13 @@ const StructureData = (raw) => {
         ];
 };
 
-const GetTerms = (raw) => {
-    return ["Fall 2021", "Spring 2021"];
+const getTerms = (raw) => {
+    return ["All Terms", "Fall 2021", "Spring 2021"];
 };
 
 const Members = (props) => {
-    const data = StructureData(props.members);
-    const terms = GetTerms(props.members);
+    const data = structureData(props.members);
+    const terms = getTerms(props.members);
 
     const [filteredTerm, setFilteredTerm] = useState("All Terms");
 
@@ -72,9 +72,10 @@ const Members = (props) => {
             <div className="bar">
                 <h2>Members</h2>
                 <Filter
+                    name="Term"
                     selected={filteredTerm}
-                    onChangeTerm={termChangeHandler}
-                    terms={terms}
+                    changed={termChangeHandler}
+                    options={terms}
                 />
             </div>
             <Grid info={filteredData}/>

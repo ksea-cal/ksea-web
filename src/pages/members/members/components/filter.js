@@ -10,9 +10,9 @@ const Filter = (props) => {
         <div className="filter-body">
             <label>{props.name}</label>
             <select value={props.selected} onChange={changeHandler}>
-                {props.options.map((val) => (
-                    <option value={val}>{val}</option>
-                ))}
+                {props.options.map(
+                    (val) => ( <option value={val}>{val}</option> )
+                )}
             </select>
         </div>
     );

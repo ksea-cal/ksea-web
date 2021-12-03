@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -15,6 +15,8 @@ import axios from "axios";
 import Grid from "./components/grid";
 import Filter from "./components/filter";
 
+// Parser for the raw data that is called from the API. 
+// Organizes data into a format that is more easily filtered and managed. 
 const structureData = (raw) => {
     return [
                 {
@@ -41,31 +43,29 @@ const structureData = (raw) => {
                     year: "2021",
                     bio: "Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen. Hello! I am a person this should exceed a hundred characters cuz I am curious to see what would happen."
                 }
-        ];
-};
-
-const getTerms = (raw) => {
-    return ["All Terms", "Fall 2021", "Spring 2021"];
+            ];
 };
 
 const Members = (props) => {
-    const data = structureData(props.members);
-    const terms = getTerms(props.members);
 
-    const [filteredTerm, setFilteredTerm] = useState("All Terms");
-
-    const termChangeHandler = (selectedTerm) => {
-        setFilteredTerm(selectedTerm);
+    const getTerms = () => {
+        axios.get('http://127.0.0.1:8000/semesters/')
+        .then(
+            (response) => {
+                setTerms(response.data.results);
+                setFilteredTerm(terms[0].id);
+            }
+        )
+        .catch((error) => { console.log(error); });
     };
+    const [terms, setTerms] = useState([]);
 
-    const [term, year] = filteredTerm.split(" ");
+    const [filteredTerm, setFilteredTerm] = useState(1);
+    const termChangeHandler = (selectedTerm) => { setFilteredTerm(selectedTerm); };
 
-    const filteredData = data.filter(
-        (member) => {
-            if (term == "All" && year == "Terms") return true;
-            return member.term == term && member.year == year;
-        }
-    );
+    useEffect( () => {getTerms();}, [] );
+    
+    const data = structureData(props.members);
 
     return (
         <div className="container">
@@ -78,7 +78,7 @@ const Members = (props) => {
                     options={terms}
                 />
             </div>
-            <Grid info={filteredData}/>
+            <Grid info={data}/>
         </div>
     );
 }

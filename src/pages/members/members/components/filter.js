@@ -6,16 +6,12 @@ const Filter = (props) => {
         props.changed(event.target.value);
     };
 
-    const structureTerm = (term, year) => {
-        return term[0].toUpperCase() + term.slice(1) + " " + year;
-    }
-
     return (
         <div className="filter-body">
             <label>{props.name}</label>
             <select value={props.selected} onChange={changeHandler}>
                 {props.options.map(
-                    (val) => ( <option value={val.id}>{structureTerm(val.term, val.year)}</option> )
+                    (val) => ( <option value={val.id}>{props.labelFunc(val)}</option> )
                 )}
             </select>
         </div>

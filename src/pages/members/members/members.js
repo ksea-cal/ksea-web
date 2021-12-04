@@ -49,21 +49,23 @@ const structureData = (raw) => {
 const Members = (props) => {
 
     const getTerms = () => {
-        axios.get('http://127.0.0.1:8000/semesters/')
+        axios.get('http://127.0.0.1:8000/semesters/') // change link when database is uploaded.
         .then(
             (response) => {
                 setTerms(response.data.results);
-                setFilteredTerm(terms[0].id);
+                setFilteredTerm(terms[0].id); // change to portray most recent term.
             }
         )
         .catch((error) => { console.log(error); });
     };
+    const structureTerm = (val) => { return val.term[0].toUpperCase() + val.term.slice(1) + " " + val.year; }
     const [terms, setTerms] = useState([]);
 
     const [filteredTerm, setFilteredTerm] = useState(1);
     const termChangeHandler = (selectedTerm) => { setFilteredTerm(selectedTerm); };
 
-    useEffect( () => {getTerms();}, [] );
+
+    useEffect( () => { getTerms(); }, [] );
     
     const data = structureData(props.members);
 
@@ -76,6 +78,7 @@ const Members = (props) => {
                     selected={filteredTerm}
                     changed={termChangeHandler}
                     options={terms}
+                    labelFunc={structureTerm}
                 />
             </div>
             <Grid info={data}/>

@@ -1,4 +1,4 @@
-import React, { Link } from "react";
+import React, { Link, useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -6,9 +6,11 @@ import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import styles from "./header.module.css";
 
 function Header() {
-  const [value, setValue] = React.useState("events");
+  const [value, setValue] = useState("home");
 
   const handleChange = (event, newValue) => {
+    // 여기서 렌더링 되어버려서 문제가 되는 이유를 몰겠
+    console.log(newValue);
     setValue(newValue);
   };
 

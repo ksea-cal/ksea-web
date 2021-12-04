@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "SingleDay-Regular";
+  src: url("../src/fonts/SingleDay-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Naver_NaNoomSonGgeulShee";
+  src: url("../src/fonts/Naver_NaNoomSonGgeulShee.ttf");
+}
+
+* {
+  font-family: "Naver_NaNoomSonGgeulShee";
+}

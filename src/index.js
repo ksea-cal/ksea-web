@@ -2,13 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
-import App from "./App";
 import { store } from "./redux/reducer";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 import Header from "./components/generic/header";
-// import Home from "./pages/home";
-// import Events from "./pages/events";
+import Home from "./pages/home";
+import Events from "./pages/events";
 // import Focusgroup from "./pages/focusgroup";
 // import Alumni from "./pages/alumni";
 
@@ -29,9 +28,9 @@ const routing = (
           `}
         </style>
         <Header />
-        {/* <Route path="/home" component={Home} />
+        <Route path="/home" component={Home} />
         <Route path="/events" component={Events} />
-        <Route path="/focusgroup" component={Focusgroup} /> */}
+        {/* <Route path="/focusgroup" component={Focusgroup} /> */}
         <Route path="/members" component={Members} />
         {/* <Route path="/alumni" component={Alumni} /> */}
         <Route path="/user" component={User} />
